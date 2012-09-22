@@ -11,10 +11,8 @@ local enrageTexture = {
 }
 
 local enrageAlerts = {
-	92967, -- BWD: Maloriak 
 	80084, -- BWD: Maimgor
 	80158, --  SC: Warbringers
-	91543, -- BWD: Arcanotron - Power Conversion
 	81706, --  TV: Lockmaw - Venomous Rage
 	36828, -- BOT: Crossfires
 }
@@ -100,6 +98,11 @@ function Serenity.SetupEnrageModule(lockName)
 			else
 				local x
 				for x=1,#enrageAlerts do
+					-- print(x)
+					-- print(enrageAlerts[x])
+					-- local name, rank, icon, cost, isFunnel, powerType, castTime, minRange, maxRange = GetSpellInfo(enrageAlerts[x])
+					-- print(name)
+					--local temp = select(1, GetSpellInfo(enrageAlerts[x]))
 					if UnitAura("target", GetSpellInfo(enrageAlerts[x]), nil, "HELPFUL") then
 						if not self.amShowing then
 							AutoCastShine_AutoCastStart(self.shine)

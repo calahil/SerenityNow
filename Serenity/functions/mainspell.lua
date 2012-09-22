@@ -16,7 +16,7 @@ local currentCost = 0
 function Serenity.GetMainSpellCost()
 
 	if Serenity.V.playerclass == "HUNTER" then
-		currentCost = select(4, GetSpellInfo(classSpells[Serenity.V.playerclass][GetPrimaryTalentTree() or 1]))
+		currentCost = select(4, GetSpellInfo(classSpells[Serenity.V.playerclass][GetSpecialization() or 1]))
 		if currentCost ~= 0 then
 			lastCost = currentCost
 		end

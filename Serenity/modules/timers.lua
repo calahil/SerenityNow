@@ -42,7 +42,7 @@ local function SetupTimers(parent, setsName)
 	local i
 	for i=1,#Serenity.db.profile.timers[setsName].timers do
 	
-		if (Serenity.db.profile.timers[setsName].timers[i][6] == 0) or (Serenity.db.profile.timers[setsName].timers[i][6] == GetPrimaryTalentTree()) then -- Talent tree check
+		if (Serenity.db.profile.timers[setsName].timers[i][6] == 0) or (Serenity.db.profile.timers[setsName].timers[i][6] == GetSpecialization()) then -- Talent tree check
 
 			parent.Timers[index] = Serenity.MakeFrame("Frame", nil, parent)
 			parent.Timers[index]:SetAlpha(0) -- Don't want it to show on the UI when being constructed.

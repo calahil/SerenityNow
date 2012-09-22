@@ -97,7 +97,7 @@ function Serenity.SetupIndicatorsModule(lockName)
 					Serenity.F.Indicators.HuntersMark:SetAlpha(0)
 			else
 				local name, _, _, _, _, duration, expirationTime = UnitAura("target", GetSpellInfo(56303), nil, "HARMFUL") -- Any hunter's mark, not just player!
-				local nameMFD, _, _, _, _, durationMFD, expirationTimeMFD = UnitAura("target", GetSpellInfo(88691), nil, "HARMFUL") -- Any MFD, not just player!
+				--local nameMFD, _, _, _, _, durationMFD, expirationTimeMFD = UnitAura("target", GetSpellInfo(88691), nil, "HARMFUL") -- Any MFD, not just player!
 
 				-- Mark present and time is above threshold of 15s (HM) / 5s (MFD)
 				if (name and ((expirationTime - GetTime()) >= 15)) or (nameMFD and ((expirationTimeMFD - GetTime()) >= 5)) or (nameMFD and Serenity.db.profile.indicators.huntersmark_mfd) then

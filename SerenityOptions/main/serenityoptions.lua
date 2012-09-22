@@ -20,20 +20,26 @@ local function setFontFlags(db, keyname, state)
 	elseif (not tContains(t, keyname)) and (state == true) then
 		t[#t+1] = keyname
 	end	
+	
 	db[3] = strtrim(strjoin(",", unpack(t)),",")
 end
 
 local function getPlayerSpells()
 	local spellTable = {}
-	local i = 1
-	while true do
-		local spellName, spellSubName = GetSpellBookItemName(i, BOOKTYPE_SPELL)
-		if not spellName then do break end end	   
-		local name, rank, icon, cost, isFunnel, powerType, castTime, minRange, maxRange = GetSpellInfo(spellName)
-		if cost and (cost > 0) then
-			spellTable[name] = name .. " (" .. cost .. ")"
-		end
-		i = i + 1
+		for i = 1, MAX_SKILLLINE_TABS do
+			local name, texture, offset, numSpells = GetSpellTabInfo(i)
+			if not name then break end
+		   
+			for s = offset + 1, offset + numSpells do
+			
+				local spellName, spellSubName = GetSpellBookItemName(s, BOOKTYPE_SPELL)
+				if not spellName then do break end end
+
+				local name, rank, icon, cost, isFunnel, powerType, castTime, minRange, maxRange = GetSpellInfo(spellName)
+				if cost and (cost > 0) then
+					spellTable[name] = name .. " (" .. cost .. ")"
+				end
+			end
 	end
 	return spellTable
 end
@@ -538,9 +544,9 @@ function SerenityOptions:CreateTimerSets()
 							values = function()
 									local t = {
 										["0"] = L2["Any Spec"],
-										["1"] = select(2, GetTalentTabInfo(1)),
-										["2"] = select(2, GetTalentTabInfo(2)),
-										["3"] = select(2, GetTalentTabInfo(3)),
+										["1"] = select(2, GetSpecializationInfo(1)),
+										["2"] = select(2, GetSpecializationInfo(2)),
+										["3"] = select(2, GetSpecializationInfo(3)),
 									}
 									return(t)
 								end,
@@ -1128,9 +1134,9 @@ function SerenityOptions:CreateIconBlocks()
 							values = function()
 									local t = {
 										["0"] = L2["Any Spec"],
-										["1"] = select(2, GetTalentTabInfo(1)),
-										["2"] = select(2, GetTalentTabInfo(2)),
-										["3"] = select(2, GetTalentTabInfo(3)),
+										["1"] = select(2, GetSpecializationInfo(1)),
+										["2"] = select(2, GetSpecializationInfo(2)),
+										["3"] = select(2, GetSpecializationInfo(3)),
 									}
 									return(t)
 								end,
@@ -6084,9 +6090,9 @@ function SerenityOptions:SetupOptions()
 								values = function()
 										local t = {
 											["0"] = L2["Any Spec"],
-											["1"] = select(2, GetTalentTabInfo(1)),
-											["2"] = select(2, GetTalentTabInfo(2)),
-											["3"] = select(2, GetTalentTabInfo(3)),
+											["1"] = select(2, GetSpecializationInfo(1)),
+											["2"] = select(2, GetSpecializationInfo(2)),
+											["3"] = select(2, GetSpecializationInfo(3)),
 										}
 										return(t)
 									end,
@@ -6161,9 +6167,9 @@ function SerenityOptions:SetupOptions()
 								values = function()
 										local t = {
 											["0"] = L2["Any Spec"],
-											["1"] = select(2, GetTalentTabInfo(1)),
-											["2"] = select(2, GetTalentTabInfo(2)),
-											["3"] = select(2, GetTalentTabInfo(3)),
+											["1"] = select(2, GetSpecializationInfo(1)),
+											["2"] = select(2, GetSpecializationInfo(2)),
+											["3"] = select(2, GetSpecializationInfo(3)),
 										}
 										return(t)
 									end,
@@ -6238,9 +6244,9 @@ function SerenityOptions:SetupOptions()
 								values = function()
 										local t = {
 											["0"] = L2["Any Spec"],
-											["1"] = select(2, GetTalentTabInfo(1)),
-											["2"] = select(2, GetTalentTabInfo(2)),
-											["3"] = select(2, GetTalentTabInfo(3)),
+											["1"] = select(2, GetSpecializationInfo(1)),
+											["2"] = select(2, GetSpecializationInfo(2)),
+											["3"] = select(2, GetSpecializationInfo(3)),
 										}
 										return(t)
 									end,
@@ -6315,9 +6321,9 @@ function SerenityOptions:SetupOptions()
 								values = function()
 										local t = {
 											["0"] = L2["Any Spec"],
-											["1"] = select(2, GetTalentTabInfo(1)),
-											["2"] = select(2, GetTalentTabInfo(2)),
-											["3"] = select(2, GetTalentTabInfo(3)),
+											["1"] = select(2, GetSpecializationInfo(1)),
+											["2"] = select(2, GetSpecializationInfo(2)),
+											["3"] = select(2, GetSpecializationInfo(3)),
 										}
 										return(t)
 									end,

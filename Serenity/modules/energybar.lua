@@ -294,7 +294,7 @@ function Serenity.SetupEnergyBarModule()
 		local name, cost
 		for i=1,5 do
 			if (Serenity.db.profile.energybar.ticks[i][1] == true) and ((Serenity.db.profile.energybar.ticks[i][6] == 0)
-				or (Serenity.db.profile.energybar.ticks[i][6] == GetPrimaryTalentTree())) and (Serenity.db.profile.energybar.ticks[1][1] == true) then
+				or (Serenity.db.profile.energybar.ticks[i][6] == GetSpecialization())) and (Serenity.db.profile.energybar.ticks[1][1] == true) then
 				
 				if i > 1 then
 					name, _, _, cost = GetSpellInfo(Serenity.db.profile.energybar.ticks[i][2])
@@ -458,7 +458,7 @@ function Serenity.SetupEnergyBarModule()
 		local stackSize = Serenity.db.profile.energybar.embedstacks and (Serenity.db.profile.frames.energybar.height * .85) or Serenity.db.profile.energybar.stackssize
 
 		-- Setup the check functions for various specs
-		if GetPrimaryTalentTree() == 1 then -- BM
+		if GetSpecialization() == 1 then -- BM
 	
 			numBars = 5 -- Frenzy Stacks on pet for focus fire.		
 			if (not select(5, GetTalentInfo(1, 6))) then return end -- Frenzy		
@@ -473,7 +473,7 @@ function Serenity.SetupEnergyBarModule()
 				return false
 			end
 		
-		elseif GetPrimaryTalentTree() == 2 then -- MM
+		elseif GetSpecialization() == 2 then -- MM
 		
 			numBars = 5 -- Ready, Set, Aim... on player		
 			checkFunction = function(self)
@@ -486,7 +486,7 @@ function Serenity.SetupEnergyBarModule()
 				end
 			end
 			
-		elseif GetPrimaryTalentTree() == 3 then -- SV
+		elseif GetSpecialization() == 3 then -- SV
 		
 			numBars = 2 -- LnL Proc
 			if (not select(5, GetTalentInfo(3, 10))) then return end -- Lock n' Load		
