@@ -1,0 +1,9 @@
+## Interface: 40200
+## Title: |cffabd473Serenity|r [Options]
+## Author: JS on US-Arthas
+## Version: 40200.1.3
+## DefaultState: Enabled
+## LoadOnDemand: 1
+## RequiredDeps: Serenity
+
+serenityoptions.xml

@@ -1,0 +1,1 @@
+--[[	After locales are defined in the actual language files, we need	to properly populate the 'L' global with the user's current locale.]]-- Import the proper locale for the userif Serenity then Serenity.L = LibStub("AceLocale-3.0"):GetLocale("Serenity", false) end

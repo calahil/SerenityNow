@@ -1,0 +1,27 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file="lib\lib.xml"/>
+	<Script file="main\init.lua"/>	
+	<Include file="locale\locale.xml"/>	
+	<Script file="functions\prefunctions.lua"/>	
+	<Script file="variables\variables.lua"/>
+	<Script file="variables\defaults.lua"/>	
+	<Script file="functions\functions.lua"/>
+	<Script file="functions\configuration.lua"/>
+	<Script file="functions\cooldowntimer.lua"/>	
+	<Script file="functions\framemover.lua"/>
+	<Script file="functions\mainspell.lua"/>
+	<Script file="functions\frames.lua"/>	
+	<Script file="media\sharedmedia.lua"/>	
+	<Script file="main\optionslod.lua"/>
+	<Script file="main\serenity.lua"/>	
+	<Script file="modules\timers.lua"/>
+	<Script file="modules\icons.lua"/>
+	<Script file="modules\energybar.lua"/>
+	<Script file="modules\enrage.lua"/>
+	<Script file="modules\indicators.lua"/>
+	<Script file="modules\crowdcontrol.lua"/>
+	<Script file="modules\misdirection.lua"/>
+	<Script file="modules\interrupts.lua"/>
+	<Script file="modules\alerts.lua"/>
+	<Script file="modules\smoother.lua"/>
+</Ui>

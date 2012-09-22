@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+
+	<Include file="lib\lib.xml"/>
+	
+	<Include file="locale\locale.xml"/>
+	
+	<Script file="main\serenityoptions.lua"/>
+
+</Ui>
