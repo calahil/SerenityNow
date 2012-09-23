@@ -1,4 +1,4 @@
-## Interface: 40200
+## Interface: 50001
 ## Title: |cffabd473Serenity|r
 ## Author: JS on US-Arthas
 ## Version: 40200.1.3

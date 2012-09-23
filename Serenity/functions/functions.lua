@@ -158,11 +158,11 @@ function Serenity.GetChatChan(chan)
 	
 		return "BATTLEGROUND"
 
-	elseif GetNumRaidMembers() > 0 then
+	elseif GetNumGroupMembers() > 0 then
 
 		return "RAID"
 
-	elseif GetNumPartyMembers() > 0 then
+	elseif GetNumGroupMembers() > 0 then
 
 		return "PARTY"
 	else
@@ -178,9 +178,9 @@ function Serenity.GetGroupType()
 		return "ARENA"		
 	elseif zoneType == "pvp" then	
 		return "PVP" -- was "BATTLEGROUND"
-	elseif GetNumRaidMembers() > 0 then
+	elseif GetNumGroupMembers() > 0 then
 		return "RAID"
-	elseif GetNumPartyMembers() > 0 then
+	elseif GetNumGroupMembers() > 0 then
 		return "PARTY"
 	else
 		return "SOLO"
@@ -316,7 +316,7 @@ function Serenity.GetTimerInfo(spell, item, target, timerType, owner)
 	-- SPELL DURATION (This is the tricky one dealing with hostile vs. friendly and full checks like all of raid/party, etc.)
 	if (target == "raid") or (target == "raidpet") then
 	
-		if GetNumRaidMembers() ~= 0 then
+		if GetNumGroupMembers() ~= 0 then
 			if IsInInstance() then maxPlayers = select(5, GetInstanceInfo()) else
 				maxPlayers = 40
 			end			
@@ -344,7 +344,7 @@ function Serenity.GetTimerInfo(spell, item, target, timerType, owner)
 		icon, duration, remaining, stacks = Serenity.CheckForBuff(spell, target == "party" and "player" or "pet", owner)
 		if icon then return (icon), (duration), (remaining), (stacks) end
 		
-		for i=1,GetNumPartyMembers() do
+		for i=1,GetNumGroupMembers() do
 			if owner ~= "PLAYERS" then
 				icon, duration, remaining, stacks = Serenity.CheckForDebuff(spell, target..i, owner)
 				if icon then return (icon), (duration), (remaining), (stacks) end

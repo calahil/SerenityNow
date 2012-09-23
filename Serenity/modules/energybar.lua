@@ -8,16 +8,16 @@ if not Serenity then return end
 
 Serenity.V.predictionSpellBase = 9
 
-local function getPredictionAdjustment()
+-- local function getPredictionAdjustment()
 
-	if Serenity.V.playerclass == "HUNTER" then
-		-- Account for Termination talent extra focus
-		if UnitHealth("target") / UnitHealthMax("target") <= 0.25 then 
-			return(select(5, GetTalentInfo(2, 12)) * 3) -- Termination base per point = 3
-		end
-	end	
-	return (0)
-end
+	-- if Serenity.V.playerclass == "HUNTER" then
+		--Account for Termination talent extra focus
+		-- if UnitHealth("target") / UnitHealthMax("target") <= 0.25 then 
+			-- return(select(5, GetTalentInfo(2, 12)) * 3) -- Termination base per point = 3
+		-- end
+	-- end	
+	-- return (0)
+-- end
 
 local function getBarColor(prediction)
 
@@ -119,7 +119,7 @@ local function updatePrediction()
 
 	if Serenity.db.profile.energybar.enableprediction and Serenity.F.EnergyBar.playerIsCasting then
 
-		local prediction = Serenity.V.predictionSpellBase + getPredictionAdjustment()
+		local prediction = Serenity.V.predictionSpellBase -- + getPredictionAdjustment()
 		local barColor = getBarColor(prediction)
 		
 		Serenity.F.EnergyBar.PredictionFrame:SetSize(
@@ -240,7 +240,7 @@ function Serenity.SetupEnergyBarModule()
 			Serenity.F.EnergyBar.targetHealthValue:SetText("")
 		end
 		
-		-- Setup prediction bar
+		--Setup prediction bar
 		if Serenity.db.profile.energybar.enableprediction then		
 			Serenity.F.EnergyBar.PredictionFrame = CreateFrame("StatusBar", nil, Serenity.F.EnergyBar)			
 			Serenity.F.EnergyBar.PredictionFrame:SetStatusBarTexture(Serenity.F.EnergyBar:GetStatusBarTexture():GetTexture()) -- Use the main bar's texture
@@ -248,7 +248,7 @@ function Serenity.SetupEnergyBarModule()
 			Serenity.F.EnergyBar.PredictionFrame:SetValue(1)
 			Serenity.F.EnergyBar.PredictionFrame:SetFrameLevel(Serenity.F.EnergyBar:GetFrameLevel())
 			Serenity.F.EnergyBar.PredictionFrame:SetSize(
-				(Serenity.F.EnergyBar:GetWidth() / 100) * (Serenity.V.predictionSpellBase + getPredictionAdjustment()), Serenity.F.EnergyBar:GetHeight())		   
+				(Serenity.F.EnergyBar:GetWidth() / 100) * (Serenity.V.predictionSpellBase), Serenity.F.EnergyBar:GetHeight())		   
 			Serenity.F.EnergyBar.PredictionFrame:Hide()
 		end
 		
